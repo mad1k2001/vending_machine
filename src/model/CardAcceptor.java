@@ -2,11 +2,15 @@ package model;
 
 import util.MoneyAcceptor;
 
-public class CoinAcceptor implements MoneyAcceptor {
+public class CardAcceptor implements MoneyAcceptor {
     private int balance;
+    private String cardNumber;
+    private String password;
 
-    public CoinAcceptor(int initialBalance) {
+    public CardAcceptor(int initialBalance, String cardNumber, String password) {
         this.balance = initialBalance;
+        this.cardNumber = cardNumber;
+        this.password = password;
     }
 
     @Override
@@ -35,11 +39,16 @@ public class CoinAcceptor implements MoneyAcceptor {
 
     @Override
     public boolean supports(String currencyType) {
-        return "coins".equalsIgnoreCase(currencyType);
+        return "cards".equalsIgnoreCase(currencyType);
+    }
+
+    @Override
+    public boolean authenticate(String cardNumber, String password) {
+        return this.cardNumber.equals(cardNumber) && this.password.equals(password);
     }
 
     @Override
     public String getInfo() {
-        return "Монетоприемник. Текущий баланс: " + balance;
+        return "Карточный приемник. Текущий баланс: " + balance;
     }
 }

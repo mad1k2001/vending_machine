@@ -1,0 +1,4 @@
+git clone.//
+git checkout home_work_25
+git commit
+git push
