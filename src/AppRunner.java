@@ -11,6 +11,9 @@ public class AppRunner {
 
     private final CoinAcceptor coinAcceptor;
 
+
+
+
     private static boolean isExit = false;
 
     private AppRunner() {
