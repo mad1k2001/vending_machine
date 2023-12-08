@@ -2,3 +2,22 @@ git clone.//
 git checkout home_work_25
 git commit
 git push
+git commit -a -m "added commands.txt"
+git push
+git commit -m "Short, one-line summary
+
+More detailed description of the changes you made in this commit.
+You can provide additional information, context, or explain why
+the changes are necessary.
+"
+git push
+git commit -a -m "Fix issue with 'h' option not exiting the program
+The 'h' option wasn't properly handled in the chooseAction method,
+leading to the program not exiting when the user entered 'h'. This
+commit addresses the issue and adds the necessary logic for a clean exit."
+git push
+git checkout master
+git merge home_work_25
+git commit -a -m "solve conflicts"
+git push
+git commit -a -m "update command.txt"
