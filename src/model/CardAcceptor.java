@@ -4,9 +4,13 @@ import util.MoneyAcceptor;
 
 public class CardAcceptor implements MoneyAcceptor {
     private int balance;
+    private String cardNumber;
+    private String password;
 
-    public CardAcceptor(int initialBalance) {
+    public CardAcceptor(int initialBalance, String cardNumber, String password) {
         this.balance = initialBalance;
+        this.cardNumber = cardNumber;
+        this.password = password;
     }
 
     @Override
@@ -29,7 +33,6 @@ public class CardAcceptor implements MoneyAcceptor {
         if (hasSufficientFunds(amount)) {
             balance -= amount;
         } else {
-            // Обработка ситуации, когда средств недостаточно
             System.out.println("Недостаточно средств на счете.");
         }
     }
@@ -37,6 +40,11 @@ public class CardAcceptor implements MoneyAcceptor {
     @Override
     public boolean supports(String currencyType) {
         return "cards".equalsIgnoreCase(currencyType);
+    }
+
+    @Override
+    public boolean authenticate(String cardNumber, String password) {
+        return this.cardNumber.equals(cardNumber) && this.password.equals(password);
     }
 
     @Override
